@@ -1,0 +1,29 @@
+stages:
+  make_dataset:
+    cmd: python .\src\data\make_dataset.py
+    deps:
+    - .\data\raw\creditcard.csv
+    - .\src\data\make_dataset.py
+    params:
+    - make_dataset.test_split
+    - make_dataset.seed
+    outs:
+    - .\data\processed\
+  train_model:
+    cmd: python .\src\models\train_model.py .\data\processed\
+    deps:
+    - .\data\processed\
+    - .\src\models\train_model.py
+    outs:
+    - .\models\
+  visualize:
+    cmd: python .\src\visualization\visualize.py .\models\model.joblib .\data\processed\
+    deps:
+    - .\data\processed\
+    - .\models\model.joblib
+    - .\src\visualization\visualize.py
+    outs:
+    - dvclive
+
+metrics:
+- dvclive\metrics.json
