@@ -1,6 +1,6 @@
 make_dataset:
   seed: 42
-  test_split: 0.2
+  test_split: 0.3
 
 train_model:
   seed: 4
