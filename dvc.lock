@@ -13,12 +13,12 @@ stages:
       size: 1679
     params:
       params.yaml:
-        make_dataset.seed: 42
+        make_dataset.seed: 99
         make_dataset.test_split: 0.2
     outs:
     - path: .\data\processed\
       hash: md5
-      md5: 703ca2d8f648328d1da1c2b2d44d3847.dir
+      md5: 2568d9b71e3dd790c41d2da15a1011f5.dir
       size: 151102527
       nfiles: 2
   train_model:
@@ -26,7 +26,7 @@ stages:
     deps:
     - path: .\data\processed\
       hash: md5
-      md5: 703ca2d8f648328d1da1c2b2d44d3847.dir
+      md5: 2568d9b71e3dd790c41d2da15a1011f5.dir
       size: 151102527
       nfiles: 2
     - path: .\src\models\train_model.py
@@ -37,32 +37,32 @@ stages:
       params.yaml:
         train_model.max_depth: 10
         train_model.n_estimators: 20
-        train_model.seed: 42
+        train_model.seed: 99
     outs:
     - path: .\models\
       hash: md5
-      md5: c34c02f63c68404068c21f0eeed806bc.dir
-      size: 212438
+      md5: fdb0958b974485c0ec02cfb03cc7e96f.dir
+      size: 211958
       nfiles: 1
   visualize:
     cmd: python .\src\visualization\visualize.py .\models\model.joblib .\data\processed\
     deps:
     - path: .\data\processed\
       hash: md5
-      md5: 703ca2d8f648328d1da1c2b2d44d3847.dir
+      md5: 2568d9b71e3dd790c41d2da15a1011f5.dir
       size: 151102527
       nfiles: 2
     - path: .\models\model.joblib
       hash: md5
-      md5: 40570901051153480642f6b2cba694a7
-      size: 212438
+      md5: 0ea8182b1751eda9a2e932024b9209e5
+      size: 211958
     - path: .\src\visualization\visualize.py
       hash: md5
-      md5: 00fc15a17431ba7a2ac576a0e3278dc6
-      size: 3780
+      md5: 8f9338ab77f3439f972c2b3bfa92fd56
+      size: 7108
     outs:
     - path: dvclive
       hash: md5
-      md5: a1ea5171efaf3ffe0941a37dea67f35e.dir
-      size: 20118116
+      md5: 05bd5f1e06bf21f3bedfb32584ec0133.dir
+      size: 20904949
       nfiles: 8

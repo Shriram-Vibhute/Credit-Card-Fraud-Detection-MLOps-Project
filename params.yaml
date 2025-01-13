@@ -1,8 +1,8 @@
 make_dataset:
-  seed: 42
+  seed: 99
   test_split: 0.2
 
 train_model:
-  seed: 42
+  seed: 99
   n_estimators: 20
   max_depth: 10

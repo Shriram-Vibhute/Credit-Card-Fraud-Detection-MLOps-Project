@@ -92,3 +92,8 @@ target/
 /dvclive
 
 %TEMP%
+
+# MLFlow experiments
+/mlartifacts
+/mlflow_model
+/mlruns
